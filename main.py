@@ -1,4 +1,4 @@
-from ness.controller import *
+from falco.controller import *
 
 
 with DolphinController("/home/strickolas/.config/dolphin-emu/Pipes/pipe") as ctl:
