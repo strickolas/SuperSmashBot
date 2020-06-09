@@ -1,5 +1,5 @@
-from falco.controller import *
+from controller.dolphin import DolphinController, Button
 
 
-with DolphinController("/home/strickolas/.config/dolphin-emu/Pipes/pipe") as ctl:
-    ctl.press_release_button(Button.A, 3)
+with DolphinController("/home/strickolas/.config/dolphin-emu/pipe1") as ctl:
+    ctl.press_release_button(Button.A, .2)
