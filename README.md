@@ -1,4 +1,4 @@
-# SuperSmashBot
+# Neural Engine for Super Smash (NESS)
 
 https://wiki.dolphin-emu.org/index.php?title=Pipe_Input
 
