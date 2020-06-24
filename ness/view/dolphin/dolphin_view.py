@@ -87,7 +87,7 @@ class DolphinView(View):
         """ Takes a screenshot without returning it. """
         self._press_release_key(self._scrn_shot, duration)
 
-    def screenshot(self, duration: float = 0) -> Union[Image, None]:
+    def screenshot(self, duration: float = 0) -> Union[type(Image), None]:
         """ Returns the screenshot of the current frame. If taking a screenshot
             fails for whatever reason, it will recurse until it succeeds. """
         self.take_screenshot(duration)

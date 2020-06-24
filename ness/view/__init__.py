@@ -1,1 +1,1 @@
-from ness.view import view
+from ness.view.view import View
