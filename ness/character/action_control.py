@@ -19,5 +19,11 @@ class ActionControl:
         self.state = self._off_state
         return self.off_function
 
+    def get_toggle(self):
+        if self.state == 1:
+            return self.off()
+        else:
+            return self.on()
+
     def toggle(self):
-        pass
+        self.get_toggle()()
