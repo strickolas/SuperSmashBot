@@ -5,5 +5,3 @@ import enum
 class Stick(enum.Enum):
     MAIN = 0
     C = 1
-
-
