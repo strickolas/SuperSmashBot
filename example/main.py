@@ -1,21 +1,19 @@
-from ness.controller import Controller
-from ness.controller.dolphin import DolphinController, Button
-from ness.view import View
+from ness.controller.dolphin import DolphinController
 from ness.view.dolphin import DolphinView
-from typing import Tuple, Type
+from ness import NessEngine
 
 
-class Main:
-    def __init__(self, controller: Controller, view: View, actions: Tuple[Type[FunctionPair]] = ""):
-        self.controller = controller
-        self.view = view
-        self.actions = actions
-
-
-if __name__ == '__main__':
+def main():
     ctl = DolphinController()
     vue = DolphinView()
     DELAY = 0.005
+    curr = (0, 0, 1, 0, 1, 0)
+    "We need to make curr match"
+    NessEngine(controller=ctl, view=vue)
+
+
+if __name__ == '__main__':
+    main()
 
     # a0 = FunctionPair(
     #     on_function=Function(ctl.press_release_button, Button.A, DELAY),
@@ -33,6 +31,3 @@ if __name__ == '__main__':
     #     default_state=0, on_state=0, off_state=0
     # )
 
-    curr = (0, 0, 1, 0, 1, 0)
-    "We need to make curr match"
-    Main(controller=ctl, view=vue)

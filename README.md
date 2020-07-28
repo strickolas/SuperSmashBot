@@ -1,4 +1,4 @@
-# Neural Engine for Super Smash (NESS)
+# Neural Engine for Super Smash (NESS) 
 
 https://wiki.dolphin-emu.org/index.php?title=Pipe_Input
 https://arxiv.org/pdf/1702.06230.pdf
@@ -10,3 +10,5 @@ https://github.com/strickolas/dolphin-env-api
 No items.
 Rework stick to make it more intuitive to use l/r/u/d.
 Figure out how to get mutually exclusive vectors.
+
+
