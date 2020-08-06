@@ -1,1 +1,0 @@
-from ness.lens.canny_edge_detection.canny_edge_detection import CannyEdgeDetection

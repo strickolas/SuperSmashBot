@@ -1,4 +1,3 @@
-import logging
 import time
 
 from ness.controller import Controller
@@ -7,40 +6,34 @@ from ness.controller.trigger import Trigger
 from ness.controller.stick import Stick
 from os.path import expanduser
 
-logger = logging.getLogger(__name__)
-
 
 class DolphinController(Controller):
+    """ Extends Controller and controls Dolphin emulator using pipes. """
     def __init__(self, pipe_path: str = expanduser("~/.local/share/dolphin-emu/Pipes/player1")) -> None:
         """ Create DolphinController instance, but do not open the fifo pipe.
             https://wiki.dolphin-emu.org/index.php?title=Pipe_Input """
         self.pipe = None
         self.path = pipe_path
-        logger.info("Controller pad initialized.")
 
     def __enter__(self) -> Controller:
         """ Open the fifo pipe. Blocks until the other side is listening. """
         self.pipe = open(self.path, 'w', buffering=1)
-        logger.info("Pipe opened.")
         return self
 
     def __exit__(self, *args) -> None:
         """ Close the fifo pipe. """
         if self.pipe:
             self.pipe.close()
-            logger.info("Pipe closed.")
 
     def press_button(self, button: Button) -> None:
         """ Press a Dolphin controller button. """
         assert button in Button
         self.pipe.write('PRESS {}\n'.format(button.name))
-        logger.info("\n {} pressed".format(button.name))
 
     def release_button(self, button: Button) -> None:
         """ Release a Dolphin controller button. """
         assert button in Button
         self.pipe.write('RELEASE {}\n'.format(button.name))
-        logger.info("\n {} released".format(button.name))
 
     def press_release_button(self, button: Button, delay: float = 0) -> None:
         """ Press and release a Dolphin controller button. """

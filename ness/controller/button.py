@@ -3,6 +3,7 @@ import enum
 
 @enum.unique
 class Button(enum.Enum):
+    """ A button has an activation of 0 or 1. """
     A = 0
     B = 1
     X = 2

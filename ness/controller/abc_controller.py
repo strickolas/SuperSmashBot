@@ -4,6 +4,7 @@ from ness.controller import Button, Stick, Trigger
 
 
 class Controller(metaclass=abc.ABCMeta):
+    """ Abstract controller class. """
     @abc.abstractmethod
     def __enter__(self) -> Any: pass
     def __exit__(self, *args: Any) -> Any: pass
