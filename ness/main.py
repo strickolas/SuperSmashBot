@@ -1,9 +1,7 @@
-from ness.view.dolphin import DolphinView
+from time import sleep
+dd
+from ness.view.window_view import WindowView
 
-x = 0
-while x < 25:
-    try:
-        DolphinView().get_screenshot(duration=0.1).show()
-        x = x + 1
-    except:
-        pass
+view = WindowView("GALE01", 400, 300)
+sleep(1)
+view.screenshot().show()
