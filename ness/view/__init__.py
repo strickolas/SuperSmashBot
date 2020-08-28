@@ -1,2 +1,2 @@
-from ness.view.view import View
-from ness.view.window_view import window_view
+from ness.view.abc_view import View
+from ness.view.window_view.window_view import WindowView

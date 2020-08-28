@@ -1,7 +1,6 @@
-from time import sleep
-dd
-from ness.view.window_view import WindowView
+from ness.engine import SSBMEngine
+from ness.initializer import DolphinInitializer
 
-view = WindowView("GALE01", 400, 300)
-sleep(1)
-view.screenshot().show()
+
+PATH_TO_ROM = "/home/strickolas/Documents/roms/SuperSmashBrosMelee.iso"
+engine = SSBMEngine(initializer=DolphinInitializer(PATH_TO_ROM))

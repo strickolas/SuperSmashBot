@@ -1,6 +1,8 @@
 import abc
 from typing import Any
-from ness.controller import Button, Stick, Trigger
+from ness.controller.button import Button
+from ness.controller.stick import Stick
+from ness.controller.trigger import Trigger
 
 
 class Controller(metaclass=abc.ABCMeta):
