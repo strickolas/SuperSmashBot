@@ -12,3 +12,5 @@ Rework stick to make it more intuitive to use l/r/u/d.
 Figure out how to get mutually exclusive vectors.
 
 
+# TODO:
+Add better error messages to popen commands
