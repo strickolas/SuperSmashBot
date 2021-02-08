@@ -1,18 +1,17 @@
+from ness.bootstrapper import Bootstrapper
 from ness.controller import Controller, DolphinController
-from ness.initializer import Initializer
 from ness.view import View, WindowView
 
 
 class SSBMEngine:
-    def __init__(self, initializer: Initializer = None,
+    def __init__(self, bootstrapper: Bootstrapper = None,
                  controller: Controller = None,
                  view: View = None):
         """
         A batteries-included engine to get started quickly! Leaves plenty of
         room for modification, either through the API, or via yaml configuration.
-        :param initializer: The initializer responsible for setting up the
-        training environment. If None, Engine will assume you will set the
-        environment up manually.
+        :param bootstrapper: Responsible for setting up the training environment.
+        If None, Engine will assume you will set up the environment manually.
         :param controller: The type of controller api you wish to use. If None,
         uses DolphinController, but custom Controller classes can be written to
         interface with another emulator, a physical console, or keyboard inputs
@@ -22,9 +21,9 @@ class SSBMEngine:
         with another emulator, an external capture card, or screen cap software
         such as Fraps.
         """
-        if initializer is not None:
-            initializer()
-        self.initializer = initializer
+        if bootstrapper is not None:
+            bootstrapper()
+        self.bootstrapper = bootstrapper
 
         if controller is None:
             self.controller = DolphinController()
@@ -40,4 +39,7 @@ class SSBMEngine:
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        self.initializer.__exit__()
+        self.bootstrapper.__exit__()
+
+    def __next__(self):
+        self.view.screenshot()

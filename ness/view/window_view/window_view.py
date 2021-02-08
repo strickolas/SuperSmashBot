@@ -10,10 +10,12 @@ class WindowView(View):
                  x_position: int = 0, y_position: int = 0,
                  view_top_offset: int = 60,  view_left_offset: int = 0,
                  ):
-        self.window_query_term = window_query_term
-        pid = os.popen("xdotool search --onlyvisible --name {}".format(self.window_query_term)).read().strip().split("\n")
+        pid = os.popen("xdotool search --onlyvisible --name {}".format(window_query_term)).read().strip().split("\n")
         if len(pid) != 1:
-            raise Exception("Window search term not specific enough; returned multiple values.")
+            raise Exception("Window search term not specific enough; returned multiple values. There may be multiple " +
+                            "windows open that match the search term provided. If this is the case, you can either " +
+                            "make the search term more specific, or close redundant windows.")
+        self.window_query_term = window_query_term
         self.game_pid = pid[0]
         self.sct = mss()
         self._viewport = {}
@@ -22,9 +24,8 @@ class WindowView(View):
     def refocus_window(self, width: int, height: int,
                        x_position: int = 0, y_position: int = 0,
                        view_top_offset: int = 60,  view_left_offset: int = 0):
-        os.popen("xdotool windowsize {} {} {}".format(self.game_pid, width, height))
-        os.popen("xdotool windowmove {} {} {}".format(self.game_pid, x_position, y_position))
-        os.popen("wmctrl -a {}".format(self.window_query_term))
+        os.popen("xdotool windowsize {} {} {}".format(self.game_pid, width, height)).read()
+        os.popen("xdotool windowmove {} {} {}".format(self.game_pid, x_position, y_position)).read(3)
         self._viewport = {'top': view_top_offset, 'left': view_left_offset, 'width': width, 'height': height}
 
     def screenshot(self) -> Image:

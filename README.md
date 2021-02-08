@@ -14,3 +14,4 @@ Figure out how to get mutually exclusive vectors.
 
 # TODO:
 Add better error messages to popen commands
+Figure out how to auto-load save state with all characters unlocked.
